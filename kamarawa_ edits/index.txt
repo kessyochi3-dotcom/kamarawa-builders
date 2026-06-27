@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="fqbbgLK4c1uGZjffqlpAqMia7H0SFPiCHbAcOjxxunA" />
+    <title>Kamarawa Builders | Est. 2016</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #c5a059;
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --dim: #a0a0a0; /* Bumped up from #888 for better brightness */
+            --card-bg: #111111;
+        }
+ 
+        * { box-sizing: border-box; }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+ 
+        /* Navigation */
+        nav {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+ 
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+ 
+        nav a:hover { opacity: 1; color: var(--gold); }
+ 
+        /* Centered Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(to top, rgba(10,10,10,0.9) 10%, rgba(10,10,10,0.4)), 
+                       url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        }
+ 
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+ 
+        /* Centered Global Section Layout */
+        section { 
+            padding: 100px 8%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+        }
+
+        .service-block { 
+            margin-bottom: 40px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            width: 100%; 
+        }
+
+        .title-wrap { 
+            display: flex; 
+            align-items: baseline; 
+            justify-content: center; 
+            margin-bottom: 25px; 
+        }
+
+        .big-letter { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10rem; color: var(--gold); line-height: 0.7; margin-right: 15px; }
+        .small-letters { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; color: #fff; }
+        
+        /* Bolder Main Service Description */
+        .service-desc { 
+            font-size: 1.1rem; 
+            line-height: 1.7; 
+            max-width: 600px; 
+            color: #f0f0f0; /* Brighter white for high contrast */
+            font-weight: 400; /* Bolder structure */
+            margin: 0 auto; 
+        }
+ 
+        /* Centered Stats Bar */
+        .stat-bar {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { color: var(--gold); font-size: 2rem; font-family: 'Playfair Display', serif; display: block; }
+        .stat-label { font-size: 9px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; }
+ 
+        /* Portfolio Structural Layout */
+        .project-section {
+            width: 100%;
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #1a1a1a;
+            position: relative;
+            width: 100%;
+            max-width: 400px; 
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        /* Grid Architecture */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* Card Design Elements */
+        .image-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        .image-card .card-content-wrap {
+            display: block;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Large numeric display for services */
+        .service-num-display {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 5rem;
+            color: rgba(197, 160, 89, 0.15);
+            background: #161616;
+            border-bottom: 1px solid #222;
+            transition: color 0.5s ease, background 0.5s ease;
+        }
+
+        .image-card:hover .service-num-display {
+            color: var(--gold);
+            background: #1c1c1c;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            padding: 1.2rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text);
+            text-align: center;
+            font-weight: 500;
+            background: var(--card-bg);
+            text-transform: capitalize;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Significantly Bolder Service Descriptions Inside Cards */
+        .service-card-desc {
+            font-size: 0.82rem;      /* Slightly increased font size */
+            color: #d1d1d1;         /* Brighter grey value for visibility */
+            font-weight: 400;       /* Hard font weight increase */
+            margin-top: 10px;
+            line-height: 1.6;
+            text-transform: none;
+        }
+ 
+        /* Centered Contact Section / Footer */
+        footer { 
+            padding: 100px 8% 60px; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+        .footer-tagline { color: var(--gold); letter-spacing: 0.3em; font-size: 10px; margin-bottom: 30px; }
+        .address-text { color: var(--dim); font-size: 0.9rem; line-height: 1.8; margin-bottom: 25px; }
+        .address-text strong { color: var(--gold); font-weight: 400; }
+        
+        .email-link {
+            color: var(--dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .email-link:hover {
+            color: var(--gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        .social-icons a { color: var(--gold); text-decoration: none; font-size: 22px; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.15); color: #fff; }
+
+        .location-link { color: var(--gold); text-decoration: none; font-size: 12px; letter-spacing: 0.1em; font-weight: bold; border-bottom: 1px solid var(--gold); padding-bottom: 5px; display: inline-flex; align-items: center; }
+ 
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .big-letter { font-size: 6rem; }
+            nav { gap: 15px; }
+            .stat-bar { flex-wrap: wrap; gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#services">SERVICES</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+ 
+    <div id="home" class="hero">
+        <h1>Kamarawa Builders</h1>
+        <p>Building a dream at a time<br>since 2016</p>
+    </div>
+ 
+    <section id="about">
+        <div class="service-block">
+            <div class="title-wrap"><span class="big-letter">A</span><span class="small-letters">bout Us</span></div>
+            <p style="font-size: 1.1rem; line-height: 1.9; color: var(--dim); max-width: 800px; text-align: center;">
+                Established in 2016, <strong>Kamarawa Builders</strong> is a premier construction firm with a decade of industry expertise. Based in Diani, we specialise in turning complex architectural visions into structural reality. Our portfolio spans high-end residential estates, modern commercial hubs, and intricate institutional projects across Kenya.
+            </p>
+            <div class="stat-bar">
+                <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">Years Experience</span></div>
+                <div class="stat-item"><span class="stat-number">50+</span><span class="stat-label">Projects Completed</span></div>
+                <div class="stat-item"><span class="stat-number">2</span><span class="stat-label">Major Regions</span></div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="services">
+        <div class="project-section">
+            <div class="title-wrap"><span class="big-letter">S</span><span class="small-letters">ervices</span></div>
+            <p class="service-desc" style="margin-bottom: 40px;">Comprehensive construction solutions from conceptual blueprints to the final luxury finish.</p>
+            
+            <div class="image-grid">
+                <!-- Service Card 1 -->
+                <div class="image-card">
+                    <div class="card-content-wrap">
+                        <div class="service-num-display">01</div>
+                    </div>
+                    <div class="image-caption">
+                        <strong style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem;">Structural Drawings</strong>
+                        <div class="service-card-desc">Precision engineering and technical drafting. We provide the essential blueprints that ensure structural integrity and architectural accuracy.</div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="image-card">
+                    <div class="card-content-wrap">
+                        <div class="service-num-display">02</div>
+                    </div>
+                    <div class="image-caption">
+                        <strong style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem;">Residential & Commercial</strong>
+                        <div class="service-card-desc">From bespoke private villas and luxury vacation houses to strategic office plazas and institutional infrastructure across Kenya.</div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="image-card">
+                    <div class="card-content-wrap">
+                        <div class="service-num-display">03</div>
+                    </div>
+                    <div class="image-caption">
+                        <strong style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem;">Pool Designing & Build</strong>
+                        <div class="service-card-desc">Expert pool engineering including infinite edge designs and garden oases, integrated seamlessly with your property’s landscape.</div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="image-card">
+                    <div class="card-content-wrap">
+                        <div class="service-num-display">04</div>
+                    </div>
+                    <div class="image-caption">
+                        <strong style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem;">Printing, Scanning & Lamination</strong>
+                        <div class="service-card-desc">High-precision wide format processing from A4 up to A0 sheets. Specialized handling for technical architectural drawings, survey maps, and construction plans.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="projects">
+        <div class="service-block">
+            <div class="title-wrap"><span class="big-letter">P</span><span class="small-letters">rojects</span></div>
+        </div>
+ 
+        <!-- Vacation House Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Vacation Houses</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://imgbb.com/" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/3ywXF8C4/cottage-6.jpg" alt="cottage 6"></a>
+                    <div class="image-caption">Cottage 6</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/QvSyxd20" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/b5wcGJSt/cottage-1.jpg" alt="cottage-1"></a>
+                    <div class="image-caption">Cottage 1</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/Y75RV8zc" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/99x8d2Fb/cottage.jpg" alt="cottage"></a>
+                    <div class="image-caption">Main Cottage</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/p5Qcnxh" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/tFzg34L/cottage-2.jpg" alt="cottage-2"></a>
+                    <div class="image-caption">Cottage 2</div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Commercial Building Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Commercial Buildings</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://imgbb.com/" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/v4gg80HW/plaz.jpg" alt="plaz"></a>
+                    <div class="image-caption">Business Center</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/HT1pmGhL" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/xqP8VzFK/diani-plaza.jpg" alt="diani-plaza"></a>
+                    <div class="image-caption">Diani Plaza</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/yFHXD893" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/MkFsbRvX/plaz.jpg" alt="plaz"></a>
+                    <div class="image-caption">Commercial Office</div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Residential Buildings Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Residential Buildings</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://imgbb.com/" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/LXmkMQRT/mvi.jpg" alt="mvi"></a>
+                    <div class="image-caption">Private Villa</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/XNLm3km" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/082PFVP/almost-workdone.jpg" alt="almost-workdone"></a>
+                    <div class="image-caption">Estate Progress</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/ym7FD2c9" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/xKdqyZtk/residentialapp.jpg" alt="residentialapp"></a>
+                    <div class="image-caption">Residential Apartments</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/Jw5mBPbp" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/tT8Qm5N2/comercial-residential2.jpg" alt="comercial-residential2"></a>
+                    <div class="image-caption">Mixed Use Complex</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/3yRs988d" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/DDrbH66W/comercial.jpg" alt="comercial"></a>
+                    <div class="image-caption">Commercial Residential</div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Family Homes Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Family Homes</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://ibb.co/60J46GcX" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/YBTtvJ40/residential.jpg" alt="residential"></a>
+                    <div class="image-caption">Contemporary Villa</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/yFsZYRby" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/7tyZRz6W/family-homes.jpg" alt="family-homes"></a>
+                    <div class="image-caption">Suburban Residence</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/RpnmmYtJ" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/99XLLcBd/familyhom.jpg" alt="familyhom"></a>
+                    <div class="image-caption">Modern Homestead</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://imgbb.com/" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/zMJDBDY/family-coastalhome.jpg" alt="family coastalhome"></a>
+                    <div class="image-caption">Coastal Family Home</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/zWTFBgD0" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/hxJc4Nwt/finishing1.jpg" alt="finishing1"></a>
+                    <div class="image-caption">Premium Finishings</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/5X05YqNK" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/RGFChLxj/finishings.jpg" alt="finishings"></a>
+                    <div class="image-caption">Architectural Detailing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pool Projects Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Pool Projects</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://ibb.co/fdf8S46k" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/4RzsfPv8/rand1.jpg" alt="rand1"></a>
+                    <div class="image-caption">Infinite Pool</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/YF589ptP" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/67Kbhg4r/image-of-the-pool-house.jpg" alt="pool-house"></a>
+                    <div class="image-caption">Pool House</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/jcVGMPf" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/qt09s3j/pools-2.jpg" alt="pools-2"></a>
+                    <div class="image-caption">Azure Waters</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://imgbb.com/" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/Kx57xHgd/rand2.jpg" alt="rand2"></a>
+                    <div class="image-caption">Garden Pool</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/Df3TR5pX" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/qYbVrk5G/poolz.jpg" alt="poolz"></a>
+                    <div class="image-caption">Oasis Build</div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Structural Drawings Section Layout -->
+        <div class="project-section">
+            <h2 class="section-title">Structural Drawings</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <a href="https://ibb.co/hJWSCXv1" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/67PkNv5J/drawing.jpg" alt="drawing"></a>
+                    <div class="image-caption">Blueprint Alpha</div>
+                </div>
+                <div class="image-card">
+                    <a href="https://ibb.co/cSrNbfCr" target="_blank" class="card-content-wrap"><img src="https://i.ibb.co/VcqvHnQq/draw3.jpg" alt="draw3"></a>
+                    <div class="image-caption">Conceptual Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Centered Contact Section -->
+    <footer id="contact">
+        <div class="footer-tagline">EXCELLENCE IN EVERY SQUARE FOOT</div>
+        <div class="address-text">
+            <strong>Diani Plaza, Second Floor</strong><br>
+            Along Darad Road, Diani, Kenya<br>
+            <a href="mailto:kamarawabuilders02@gmail.com" class="email-link">kamarawabuilders02@gmail.com</a><br>
+            +254 721 808 157
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://wa.me/254721808157?text=Hello%20Kamarawa%20Builders,%20I%20am%20interested%20in%20a%20project" target="_blank" title="Chat on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/martin_osambo?igsh=MXdvZzBpMXc5Yw==" target="_blank" title="Follow on Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/kamarawab" target="_blank" title="Follow on Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+ 
+        <p style="margin-top: 10px;">
+            <a href="https://www.google.com/maps/search/?api=1&query=Bold+Gym+International+Diani" target="_blank" class="location-link">
+                CLICK HERE TO GET THE LOCATION   <i class="fas fa-map-marker-alt"></i>
+            </a>
+        </p>
+        
+        <p style="font-size: 9px; color: #444; margin-top: 50px; letter-spacing: 1px;">
+            © 2026 KAMARAWA BUILDERS. ALL RIGHTS RESERVED.
+        </p>
+    </footer>
+</body>
+</html>
